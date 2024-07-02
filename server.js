@@ -51,6 +51,13 @@ fastify.delete("/users/:id", async (request, reply) => {
 });
 
 // Run the server
+fastify.delete("/users/:id", async (request, reply) => {
+  const { id } = request.params;
+  users = users.filter((user) => user.id != id);
+  return { message: "User deleted" };
+});
+
+// Run the server
 const start = async () => {
   try {
     await fastify.listen(3000);
